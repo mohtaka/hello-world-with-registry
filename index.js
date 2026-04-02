@@ -7,7 +7,7 @@ const server = http.createServer(function(request, response) {
     response.end(`
         <html>
             <body style="background-color: #f0f8ff; text-align: center; padding-top: 50px;">
-                <h1>🚀 Azure Container Registry + Azure App Service デプロイ成功！</h1>
+                <h1>🚀 Azure Container Registry + Azure App Service デプロイ成功！PipeLineつながっている！！</h1>
                 <p>このメッセージが表示されていれば、あなたのコードが動いています。</p>
                 <p>更新時刻: ${now}</p>
             </body>
