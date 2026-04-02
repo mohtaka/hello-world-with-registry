@@ -37,3 +37,24 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+
+- stage: Deploy
+  displayName: Deploy to App Service
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy Job
+    environment: 'Production' # 先ほど作成したEnvironment名
+    pool:
+      vmImage: $(vmImageName)
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureWebAppContainer@1
+            displayName: 'Azure App Serviceへのデプロイ実行'
+            inputs:
+              azureSubscription: 'Azure-Subscription-Connection' # あなたが作成した接続名
+              appName: 'あなたのAppService名' # Azure Portalで確認した名前
+              imageName: '$(containerRegistry)/$(imageRepository):$(tag)'
