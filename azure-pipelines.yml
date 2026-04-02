@@ -56,5 +56,5 @@ stages:
             displayName: 'Azure App Serviceへのデプロイ実行'
             inputs:
               azureSubscription: 'Azure-Subscription-Connection' # あなたが作成した接続名
-              appName: 'あなたのAppService名' # Azure Portalで確認した名前
+              appName: 'bpo-hello-app-test-0324' # Azure Portalで確認した名前
               imageName: '$(containerRegistry)/$(imageRepository):$(tag)'
